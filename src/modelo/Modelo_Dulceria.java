@@ -24,7 +24,6 @@ public class Modelo_Dulceria {
     }
 
     public void Actualizar_Dulce(Dulces dulceActualizado, int indice) {
-        Listar_Dulces();
         {
             Dulces dulce = listaDulces.get(indice);
                 // Actualizar las propiedades del dulce existente con los valores de dulceActualizado
@@ -38,14 +37,13 @@ public class Modelo_Dulceria {
     }
 
     public void Eliminar_Dulces(int indiceEliminar) {
-        Listar_Dulces();
         listaDulces.remove(indiceEliminar);
     }
 
-    public ArrayList<Dulces> Listar_Dulces() {   
-            return listaDulces;
-        }
-
+    public ArrayList<Dulces> Listar_Dulces() {
+            ArrayList<Dulces> listaDulces = ListaDulces.getInstance().getListaDulces();
+        return listaDulces;
+    }
     public Dulces Buscar_Dulce(String nombreDulce) {
         for (int i = 0; i < listaDulces.size(); i++) {
             Dulces dulce = listaDulces.get(i);
