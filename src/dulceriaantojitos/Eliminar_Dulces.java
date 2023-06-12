@@ -8,6 +8,9 @@ import logica.Dulces;
 import logica.ListaDulces;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 /**
  *
  * @authors
@@ -219,7 +222,18 @@ public class Eliminar_Dulces extends javax.swing.JFrame {
             }
         });
     }
-
+    public JTextArea getTextArea(){
+        return jTextArea1;
+    }
+    public JButton getButton1(){
+        return jButton3;
+    }
+    public JButton getButton2(){
+        return jButton2;
+    }
+    public JTextField getTextField(){
+        return jTextField1;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

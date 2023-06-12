@@ -9,6 +9,12 @@ import logica.ListaDulces;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @authors
@@ -520,7 +526,31 @@ public class Actualizar_Dulce extends javax.swing.JFrame {
             }
         });
     }
+    public JButton getButton3(){
+        return jButton2;
+    }
+    public JButton getButton2(){
+        return jButton3;
+    }
+    public JComboBox<String> getComboBox(){
+        return jComboBox1;
+    }
+    public JTextArea getTextArea1(){
+        return jTextArea1;
 
+    }
+    public JTextField getTextField1(){
+        return jTextField1;
+    }
+    public JTextField getTextField3(){
+        return jTextField3;
+    }
+    public JTextField getTextField4(){
+        return jTextField4;
+    }
+    public JTextField getTextField5(){
+        return jTextField5;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

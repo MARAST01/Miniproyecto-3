@@ -7,6 +7,10 @@ package dulceriaantojitos;
 import java.util.ArrayList;
 import logica.Dulces;
 import logica.ListaDulces;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -157,7 +161,12 @@ public class Listar_Dulces extends javax.swing.JFrame {
             }
         });
     }
-
+    public JButton getBoton(){
+        return jButton3;
+    }
+    public JTextArea getTextArea(){
+        return jTextArea1;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
