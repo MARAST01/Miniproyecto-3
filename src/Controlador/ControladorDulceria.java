@@ -18,16 +18,17 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import modelo.Modelo_Dulceria;
 public class ControladorDulceria implements ActionListener {
-    private Modelo_Dulceria modeloDulceria;
-    private Ventana_Nuevo_Dulce ventanaNuevoDulce;
-    private Actualizar_Dulce ActualizarDulce;
-    private Buscar_Dulce BuscarDulce;
-    private Eliminar_Dulces EliminarDulce;
-    private GUIAntojitos GUIAntojitos;
-    private Listar_Dulces ListarDulces;
+    Modelo_Dulceria modeloDulceria;
+    Ventana_Nuevo_Dulce ventanaNuevoDulce;
+    Actualizar_Dulce ActualizarDulce;
+    Buscar_Dulce BuscarDulce;
+    Eliminar_Dulces EliminarDulce;
+    GUIAntojitos vista;
+    Listar_Dulces ListarDulces;
     
-    public ControladorDulceria(Modelo_Dulceria modeloDulceria) {
+    public ControladorDulceria(Modelo_Dulceria modeloDulceria, GUIAntojitos vista) {
         this.modeloDulceria = modeloDulceria;
+        this.vista = vista;
         ventanaNuevoDulce = new Ventana_Nuevo_Dulce();
         ventanaNuevoDulce.getBoton().addActionListener(this);
         ActualizarDulce = new Actualizar_Dulce();
@@ -43,7 +44,7 @@ public class ControladorDulceria implements ActionListener {
 
     }
     public void iniciar(){
-        //GUIAntojitos GUIAntojitos.setVisible(true);
+        //vista
     }
     
     @Override
