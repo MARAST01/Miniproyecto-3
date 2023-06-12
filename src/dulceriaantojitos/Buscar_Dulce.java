@@ -9,6 +9,13 @@ import logica.ListaDulces;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.JOptionPane;
+
+import java.awt.TextField;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+
 /**
  *
 * @authors
@@ -291,7 +298,15 @@ public class Buscar_Dulce extends javax.swing.JFrame {
             }
         });
     }
-
+  public JButton getButton(){
+        return jButton2;
+    }
+    public JTextArea getTextArea(){
+        return jTextArea1;
+    }
+    public JTextField getTextField(){
+        return jTextField1;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

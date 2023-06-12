@@ -9,6 +9,11 @@ import javax.swing.JOptionPane;
 import logica.Categoria;
 import logica.Dulces;
 import logica.ListaDulces;
+
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+
 /**
  *
  * @authors
@@ -188,6 +193,7 @@ public class Ventana_Nuevo_Dulce extends javax.swing.JFrame {
     //al darle click al boton, lo que este escrito en los Jtextfield y puesto en el combobox
     //...será guardado como objeto en el arraylist
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        /* 
 
         String categori = jComboBox1.getSelectedItem().toString();
         Categoria categorias = null;
@@ -215,6 +221,8 @@ public class Ventana_Nuevo_Dulce extends javax.swing.JFrame {
         this.dispose();
 
         
+        */
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -263,7 +271,25 @@ public class Ventana_Nuevo_Dulce extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public JButton getBoton() {
+        System.out.println("hola mundo");
+        return jButton1;
+    }
+    public JTextField getTextFieldNombre() {
+        return jTextField2;
+    }
+    
+    public JTextField getTextFieldCodigo() {
+        return jTextField1;
+    }
+    
+    public JTextField getTextFieldPrecio() {
+        return jTextField3;
+    }
+    public JComboBox<String> getComboBox() {
+        return jComboBox1;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
