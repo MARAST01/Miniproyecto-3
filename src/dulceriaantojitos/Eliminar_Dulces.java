@@ -145,6 +145,7 @@ public class Eliminar_Dulces extends javax.swing.JFrame {
     //al presionar el boton elimina del arraylist el objeto con el indice 
     //que el usuario digito en el jtextfield,
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        /*
         ArrayList<Dulces> listaDulces = ListaDulces.getInstance().getListaDulces();
         String indice = jTextField1.getText();
         int indiceInt = Integer.parseInt(indice);
@@ -162,6 +163,8 @@ public class Eliminar_Dulces extends javax.swing.JFrame {
             //accion cuando el índice no es válido
             JOptionPane.showMessageDialog(null, "El índice no es válido");
         }
+        */
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -225,7 +228,7 @@ public class Eliminar_Dulces extends javax.swing.JFrame {
     public JTextArea getTextArea(){
         return jTextArea1;
     }
-    public JButton getButton1(){
+    public JButton getButton3(){
         return jButton3;
     }
     public JButton getButton2(){

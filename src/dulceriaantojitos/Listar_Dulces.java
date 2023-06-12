@@ -110,7 +110,7 @@ public class Listar_Dulces extends javax.swing.JFrame {
     //imprime en un Jtextarea, el arreglo que tiene los objetos dulces
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Obtener el ArrayList de Dulces
-    ArrayList<Dulces> listaDulces = ListaDulces.getInstance().getListaDulces();
+    /*ArrayList<Dulces> listaDulces = ListaDulces.getInstance().getListaDulces();
 
     // Limpiar el JTextArea antes de agregar el contenido
     jTextArea1.setText("");
@@ -124,7 +124,7 @@ public class Listar_Dulces extends javax.swing.JFrame {
         jTextArea1.append("Precio: " + dulce.getPrecio() + ", ");
         jTextArea1.append("Categoría: " + dulce.getCategoria() + ". \n ");
         jTextArea1.append("------------------\n");
-    }    
+    } */    
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

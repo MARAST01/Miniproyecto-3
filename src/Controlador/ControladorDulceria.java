@@ -20,15 +20,30 @@ import modelo.Modelo_Dulceria;
 public class ControladorDulceria implements ActionListener {
     private Modelo_Dulceria modeloDulceria;
     private Ventana_Nuevo_Dulce ventanaNuevoDulce;
-    private Actualizar_Dulce actualizardulce;
+    private Actualizar_Dulce ActualizarDulce;
+    private Buscar_Dulce BuscarDulce;
+    private Eliminar_Dulces EliminarDulce;
+    private GUIAntojitos GUIAntojitos;
+    private Listar_Dulces ListarDulces;
     
     public ControladorDulceria(Modelo_Dulceria modeloDulceria) {
         this.modeloDulceria = modeloDulceria;
         ventanaNuevoDulce = new Ventana_Nuevo_Dulce();
         ventanaNuevoDulce.getBoton().addActionListener(this);
-        actualizardulce = new Actualizar_Dulce();
-        actualizardulce.getButton2().addActionListener(this);
-        actualizardulce.getButton3().addActionListener(this);
+        ActualizarDulce = new Actualizar_Dulce();
+        ActualizarDulce.getButton2().addActionListener(this);
+        ActualizarDulce.getButton3().addActionListener(this);
+        BuscarDulce = new Buscar_Dulce();
+        BuscarDulce.getButton().addActionListener(this);
+        EliminarDulce = new Eliminar_Dulces();
+        EliminarDulce.getButton3().addActionListener(this);
+        EliminarDulce.getButton2().addActionListener(this);
+        ListarDulces = new Listar_Dulces();
+        ListarDulces.getBoton().addActionListener(this);
+
+    }
+    public void iniciar(){
+        //GUIAntojitos GUIAntojitos.setVisible(true);
     }
     
     @Override
@@ -58,37 +73,111 @@ public class ControladorDulceria implements ActionListener {
             JOptionPane.showMessageDialog(null, "Has guardado el dulce correctamente");
             
         }
-    if (e.getSource() == actualizardulce.getButton2()) {    
+        if (e.getSource() == ActualizarDulce.getButton2()) {    
         
-    String indice = actualizardulce.getTextField1().toString();
-    int indiceInt = Integer.parseInt(indice);
-    indiceInt-=1;
-    String categori = actualizardulce.getComboBox().getSelectedItem().toString();
-    Categoria categorias = null;
-            if ("Acido".equals(categori)){
-                categorias = Categoria.acido;
+        String indice = ActualizarDulce.getTextField1().getText().toString();
+        int indiceInt = Integer.parseInt(indice);
+        indiceInt-=1;
+        String categori = ActualizarDulce.getComboBox().getSelectedItem().toString();
+        Categoria categorias = null;
+                if ("Acido".equals(categori)){
+                    categorias = Categoria.acido;
 
-            }
-            if ("Dulce".equals(categori)){
-                categorias = Categoria.dulce;
-                
-            }
-            if ("Sin Azucar".equals(categori)){
-                categorias = Categoria.acido;
+                }
+                if ("Dulce".equals(categori)){
+                    categorias = Categoria.dulce;
 
-            } 
-        String nombre = actualizardulce.getTextField3().toString();
-        String codigo = actualizardulce.getTextField4().toString();
-        String precio = actualizardulce.getTextField5().toString();
-        Dulces dulce = new Dulces(categorias, nombre, codigo, precio);
-        
-        if (indiceInt >= 0 && indiceInt < lista_Dulces.size()) {
-            modeloDulceria.Actualizar_Dulce(dulce, indiceInt);
-            JOptionPane.showMessageDialog(null, "dulce actualizado correctamente");
-        } else {
-            // accion cuando el índice no es válido
-            JOptionPane.showMessageDialog(null,"El índice no es válido");
+                }
+                if ("Sin Azucar".equals(categori)){
+                    categorias = Categoria.acido;
+
+                } 
+            String nombre = ActualizarDulce.getTextField3().getText().toString();
+            String codigo = ActualizarDulce.getTextField4().getText().toString();
+            String precio = ActualizarDulce.getTextField5().getText().toString();
+            Dulces dulce = new Dulces(categorias, nombre, codigo, precio);
+            
+            if (indiceInt >= 0 && indiceInt < lista_Dulces.size()) {
+                modeloDulceria.Actualizar_Dulce(dulce, indiceInt);
+                JOptionPane.showMessageDialog(null, "dulce actualizado correctamente");
+            } else {
+                // accion cuando el índice no es válido
+                JOptionPane.showMessageDialog(null,"El índice no es válido");
+            }
         }
-    }
-   }     
+        if (e.getSource() == ActualizarDulce.getButton3()) {    
+            ActualizarDulce.getTextArea1().setText("");
+
+            // Recorrer el ArrayList y agregar los atributos de cada objeto al JTextArea
+            for (int i = 0; i < lista_Dulces.size(); i++) {
+                Dulces dulce = lista_Dulces.get(i);
+                ActualizarDulce.getTextArea1().append( 1+i +":");
+                ActualizarDulce.getTextArea1().append("Nombre: " + dulce.getNombre() + ", " );
+                ActualizarDulce.getTextArea1().append("Código: " + dulce.getCodigo() + ", ");
+                ActualizarDulce.getTextArea1().append("Precio: " + dulce.getPrecio() + ", ");
+                ActualizarDulce.getTextArea1().append("Categoría: " + dulce.getCategoria() + ". \n ");
+                ActualizarDulce.getTextArea1().append("------------------\n");
+    }    
+        }
+        if (e.getSource() == BuscarDulce.getButton()) {
+            String nombreBuscar = BuscarDulce.getTextField().getText().toString();
+            boolean encontrado = false;
+            Dulces dulceencontrado = modeloDulceria.Buscar_Dulce(nombreBuscar);
+            if (dulceencontrado != null) {                BuscarDulce.getTextArea().append("Nombre: " + dulceencontrado.getNombre() + ", " );
+                BuscarDulce.getTextArea().append("Código: " + dulceencontrado.getCodigo() + ", ");
+                BuscarDulce.getTextArea().append("Precio: " + dulceencontrado.getPrecio() + ", ");
+                BuscarDulce.getTextArea().append("Categoría: " + dulceencontrado.getCategoria() + ". \n ");
+                BuscarDulce.getTextArea().append("------------------\n");
+                JOptionPane.showMessageDialog(null, "Dulce encontrado");
+                encontrado = true;
+            }   
+            if (!encontrado) {
+                JOptionPane.showMessageDialog(null, "no hay dulce con ese nombre.");
+            }          
+        }
+        if (e.getSource() == EliminarDulce.getButton3()) {
+            ActualizarDulce.getTextArea1().setText("");
+
+            // Recorrer el ArrayList y agregar los atributos de cada objeto al JTextArea
+            for (int i = 0; i < lista_Dulces.size(); i++) {
+                Dulces dulce = lista_Dulces.get(i);
+                EliminarDulce.getTextArea().append( 1+i +":");
+                EliminarDulce.getTextArea().append("Nombre: " + dulce.getNombre() + ", " );
+                EliminarDulce.getTextArea().append("Código: " + dulce.getCodigo() + ", ");
+                EliminarDulce.getTextArea().append("Precio: " + dulce.getPrecio() + ", ");
+                EliminarDulce.getTextArea().append("Categoría: " + dulce.getCategoria() + ". \n ");
+                EliminarDulce.getTextArea().append("------------------\n");
+            }
+        }
+        if (e.getSource() == EliminarDulce.getButton2()) {
+            String indice = EliminarDulce.getTextField().getText();
+            int indiceInt = Integer.parseInt(indice);
+            indiceInt-=1;
+            int indiceEliminar = indiceInt;
+            // Verificar si el índice es válido
+            if (indiceEliminar >= 0 && indiceEliminar < lista_Dulces.size()) {
+                // Eliminar el objeto del ArrayList en el índice indicado
+                modeloDulceria.Eliminar_Dulces(indiceEliminar);
+                JOptionPane.showMessageDialog(null, "Dulce eliminado correctamente");
+            } else {
+                //accion cuando el índice no es válido
+                JOptionPane.showMessageDialog(null, "El índice no es válido");
+            }
+        }
+        if (e.getSource() == ListarDulces.getBoton()) {
+            ArrayList<Dulces> listaDulces = modeloDulceria.Listar_Dulces();
+            ListarDulces.getTextArea().setText("");
+
+            for (int i = 0; i < listaDulces.size(); i++) {
+                Dulces dulce = listaDulces.get(i);
+                ListarDulces.getTextArea().append(1 + i + ":");
+                ListarDulces.getTextArea().append("Nombre: " + dulce.getNombre() + ", ");
+                ListarDulces.getTextArea().append("Código: " + dulce.getCodigo() + ", ");
+                ListarDulces.getTextArea().append("Precio: " + dulce.getPrecio() + ", ");
+                ListarDulces.getTextArea().append("Categoría: " + dulce.getCategoria() + ". \n");
+                ListarDulces.getTextArea().append("------------------\n");
+            }
+
+        }
+    }     
 }
