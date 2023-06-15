@@ -7,10 +7,14 @@ package dulceriaantojitos;
 import java.util.ArrayList;
 import logica.Dulces;
 import logica.ListaDulces;
+import modelo.Modelo_Dulceria;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
+import Controlador.controlador_Listar_Dulces;
 
 /**
  *
@@ -19,7 +23,7 @@ import javax.swing.JTextArea;
  * Tina Torres
  * Juan Jose Gallego
  */
-public class Listar_Dulces extends javax.swing.JFrame {
+public class Listar_Dulces extends javax.swing.JFrame implements ListarDulces{
 
     /**
      * Creates new form Listar_Dulces
@@ -109,15 +113,14 @@ public class Listar_Dulces extends javax.swing.JFrame {
 
     //imprime en un Jtextarea, el arreglo que tiene los objetos dulces
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // Obtener el ArrayList de Dulces
-    /*ArrayList<Dulces> listaDulces = ListaDulces.getInstance().getListaDulces();
+      /*  // Obtener el ArrayList de Dulces
 
     // Limpiar el JTextArea antes de agregar el contenido
     jTextArea1.setText("");
 
     // Recorrer el ArrayList y agregar los atributos de cada objeto al JTextArea
-   for (int i = 0; i < listaDulces.size(); i++) {
-        Dulces dulce = listaDulces.get(i);
+   for (int i = 0; i < Modelo_Dulceria.listaDulces.size(); i++) {
+        Dulces dulce = Modelo_Dulceria.listaDulces.get(i);
         jTextArea1.append( 1+i +":");
         jTextArea1.append("Nombre: " + dulce.getNombre() + ", " );
         jTextArea1.append("Código: " + dulce.getCodigo() + ", ");
@@ -174,4 +177,21 @@ public class Listar_Dulces extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+    @Override
+    public void iniciar(controlador_Listar_Dulces controlador) {
+        jButton3.addActionListener(controlador);
+        setVisible(true);
+        jTextArea1.setText("");
+    }
+
+    @Override
+    public void mostrar_datos(int indice, String Nombre, String Codigo, String categoria, String precio) {
+        jTextArea1.append( 1+indice +":");
+        jTextArea1.append("Nombre: " + Nombre + ", " );
+        jTextArea1.append("Código: " + Codigo + ", ");
+        jTextArea1.append("Precio: " + categoria + ", ");
+        jTextArea1.append("Categoría: " + precio + ". \n ");
+        jTextArea1.append("------------------\n");
+        
+    }
 }

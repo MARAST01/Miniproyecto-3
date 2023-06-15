@@ -11,39 +11,47 @@ public class Modelo_Dulceria {
     String nombre, codigo, precio;
     int indice;
     int indiceEliminar;
-    private ArrayList<Dulces> listaDulces;
+    static public ArrayList<Dulces> listaDulces = new ArrayList<Dulces>();
 
 
-    public Modelo_Dulceria() {
-        Dulces dulce = new Dulces(categorias, nombre, codigo, precio);
-        ArrayList<Dulces> listaDulces = ListaDulces.getInstance().getListaDulces();
+
+    public static ArrayList<Dulces> Listar_Dulces() {
+        return listaDulces;
+    }
+
+    public static void setListaDulces(ArrayList<Dulces> listaDulces) {
+        Modelo_Dulceria.listaDulces = listaDulces;
     }
 
     public void Nuevo_Dulce(Dulces nuevoDulce) {
         listaDulces.add(nuevoDulce);
     }
 
+    public int getTamano(){
+        return listaDulces.size();
+    }
+
     public void Actualizar_Dulce(Dulces dulceActualizado, int indice) {
-        {
-            Dulces dulce = listaDulces.get(indice);
-                // Actualizar las propiedades del dulce existente con los valores de dulceActualizado
-                dulce.setNombre(dulceActualizado.getNombre());
-                dulce.setPrecio(dulceActualizado.getPrecio());
-                dulce.setCodigo(dulceActualizado.getCodigo());
-                dulce.setCategoria(dulceActualizado.getCategoria());
-                
+        
+        Dulces dulce = listaDulces.get(indice);
+        // Actualizar las propiedades del dulce existente con los valores de dulceActualizado
+        dulce.setNombre(dulceActualizado.getNombre());
+        dulce.setPrecio(dulceActualizado.getPrecio());
+        dulce.setCodigo(dulceActualizado.getCodigo());
+        dulce.setCategoria(dulceActualizado.getCategoria());
             
-        }
+            
+        
     }
 
     public void Eliminar_Dulces(int indiceEliminar) {
         listaDulces.remove(indiceEliminar);
     }
 
-    public ArrayList<Dulces> Listar_Dulces() {
+    /*public ArrayList<Dulces> Listar_Dulces() {
             ArrayList<Dulces> listaDulces = ListaDulces.getInstance().getListaDulces();
         return listaDulces;
-    }
+    }*/
     public Dulces Buscar_Dulce(String nombreDulce) {
         for (int i = 0; i < listaDulces.size(); i++) {
             Dulces dulce = listaDulces.get(i);
