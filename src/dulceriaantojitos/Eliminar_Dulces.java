@@ -6,11 +6,15 @@ package dulceriaantojitos;
 import logica.Categoria;
 import logica.Dulces;
 import logica.ListaDulces;
+import modelo.Modelo_Dulceria;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import Controlador.Controlador_Eliminar_Dulces;
 /**
  *
  * @authors
@@ -18,7 +22,7 @@ import javax.swing.JTextField;
  * Tina Torres
  * Juan Jose Gallego
  */
-public class Eliminar_Dulces extends javax.swing.JFrame {
+public class Eliminar_Dulces extends javax.swing.JFrame implements EliminarDulces {
 
     /**
      * Creates new form Eliminar_Dulces
@@ -173,7 +177,7 @@ public class Eliminar_Dulces extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Obtener el ArrayList de Dulces
-        ArrayList<Dulces> listaDulces = ListaDulces.getInstance().getListaDulces();
+        ArrayList<Dulces> listaDulces = Modelo_Dulceria.Listar_Dulces();
 
         // Limpiar el JTextArea antes de agregar el contenido
         jTextArea1.setText("");
@@ -247,4 +251,14 @@ public class Eliminar_Dulces extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+    @Override
+    public String getIndice() {
+        return jTextField1.getText();
+    }
+
+    @Override
+    public void iniciar(Controlador_Eliminar_Dulces controlador) {
+        jButton2.addActionListener(controlador);
+        setVisible(true);   
+    }
 }

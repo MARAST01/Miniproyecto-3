@@ -15,6 +15,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Controlador.controlador_Actualizar_Dulce;
+import Controlador.controlador_Nuevo_Dulceria;
+import modelo.Modelo_Dulceria;
+
 /**
  *
  * @authors
@@ -22,7 +26,7 @@ import javax.swing.JTextField;
  * Tina Torres
  * Juan Jose Gallego
  */
-public class Actualizar_Dulce extends javax.swing.JFrame {
+public class Actualizar_Dulce extends javax.swing.JFrame implements ActualizarDulce{
 
     /**
      * Creates new form Actualizar_Dulce
@@ -398,10 +402,12 @@ public class Actualizar_Dulce extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         GUIAntojitos ventana1 = new GUIAntojitos();
         ventana1.setVisible(true);
         this.dispose();
+        //GEN-FIRST:event_jButton1ActionPerformed
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -410,8 +416,9 @@ public class Actualizar_Dulce extends javax.swing.JFrame {
     //al oprimir el boton:
     //imprime todos los objetos con sus caracteristicas, con sus detalles em el jtexarea
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    // Obtener el ArrayList de Dulces
-    ArrayList<Dulces> listaDulces = ListaDulces.getInstance().getListaDulces();
+
+    // Obtener el ArrayList de Dulces                                   
+    ArrayList<Dulces> listaDulces = Modelo_Dulceria.Listar_Dulces();
 
     // Limpiar el JTextArea antes de agregar el contenido
     jTextArea1.setText("");
@@ -446,51 +453,7 @@ public class Actualizar_Dulce extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
     //al oprimir el boton sobreescribe las variables que tenia el objeto, el cual se ubico
     //por su indice
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    ArrayList<Dulces> listaDulces = ListaDulces.getInstance().getListaDulces();
-    String indice = jTextField1.getText();
-    int indiceInt = Integer.parseInt(indice);
-    indiceInt-=1;
-    String categori = jComboBox1.getSelectedItem().toString();
-    Categoria categorias = null;
-            if ("Acido".equals(categori)){
-                categorias = Categoria.acido;
-
-            }
-            if ("Dulce".equals(categori)){
-                categorias = Categoria.dulce;
-                
-            }
-            if ("Sin Azucar".equals(categori)){
-                categorias = Categoria.acido;
-
-            } 
-        String nombre = jTextField3.getText();
-        String codigo = jTextField4.getText();
-        String precio = jTextField5.getText();
-        
-        if (indiceInt >= 0 && indiceInt < listaDulces.size()) {
-            // Obtener el objeto en el índice indicado
-            Dulces dulceActualizado = listaDulces.get(indiceInt);
-
-            // Actualizar los atributos del objeto
-            dulceActualizado.setNombre(nombre);
-            dulceActualizado.setCodigo(codigo);
-            dulceActualizado.setPrecio(precio);
-            dulceActualizado.setCategoria(categorias);
-            Dulces dulce = new Dulces(categorias, nombre, codigo, precio);
-            JOptionPane.showMessageDialog(null, "dulce actualizado correctamente");
-            GUIAntojitos ventana1 = new GUIAntojitos();
-            ventana1.setVisible(true);
-            this.dispose();
-        } else {
-            // accion cuando el índice no es válido
-            JOptionPane.showMessageDialog(null,"El índice no es válido");
-}
-        
-
-
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {}//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -526,31 +489,6 @@ public class Actualizar_Dulce extends javax.swing.JFrame {
             }
         });
     }
-    public JButton getButton3(){
-        return jButton2;
-    }
-    public JButton getButton2(){
-        return jButton3;
-    }
-    public JComboBox<String> getComboBox(){
-        return jComboBox1;
-    }
-    public JTextArea getTextArea1(){
-        return jTextArea1;
-
-    }
-    public JTextField getTextField1(){
-        return jTextField1;
-    }
-    public JTextField getTextField3(){
-        return jTextField3;
-    }
-    public JTextField getTextField4(){
-        return jTextField4;
-    }
-    public JTextField getTextField5(){
-        return jTextField5;
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -581,4 +519,36 @@ public class Actualizar_Dulce extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
+    @Override
+    
+    public void iniciar(controlador_Actualizar_Dulce controlador) {
+        jButton2.addActionListener(controlador);
+        setVisible(true);
+    }
+
+    @Override
+    public String getNombre() {
+        return jTextField3.getText();
+    }
+
+    @Override
+    public String getCodigo() {
+        return jTextField4.getText();
+    }
+
+    @Override
+    public String getPrecio() {
+        return jTextField5.getText(); 
+    }
+    @Override
+    public Categoria getCategoria() {
+        return Categoria.valueOf(jComboBox1.getSelectedItem().toString().toLowerCase());
+    }
+
+    @Override
+    public String getIndice() {
+        return jTextField1.getText();
+    }
+    
+
 }

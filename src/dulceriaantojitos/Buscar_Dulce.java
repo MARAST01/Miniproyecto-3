@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Controlador.controlador_Buscar_Dulce;
+
 
 /**
  *
@@ -23,7 +25,7 @@ import javax.swing.JTextField;
  * Tina Torres
  * Juan Jose Gallego
  */
-public class Buscar_Dulce extends javax.swing.JFrame {
+public class Buscar_Dulce extends javax.swing.JFrame implements BuscarDulce{
 
     /**
      * Creates new form Buscar_Dulce
@@ -232,7 +234,7 @@ public class Buscar_Dulce extends javax.swing.JFrame {
     //en el arreglo un objeto que coincida con el metodo ".getNombre"
     //para imprimirlo en un jtextarea
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ArrayList<Dulces> listaDulces = ListaDulces.getInstance().getListaDulces();
+        /*ArrayList<Dulces> listaDulces = ListaDulces.getInstance().getListaDulces();
         String nombreBuscar = jTextField1.getText();
         boolean encontrado = false;
         for (int i = 0; i < listaDulces.size(); i++) {
@@ -251,7 +253,7 @@ public class Buscar_Dulce extends javax.swing.JFrame {
         }
         if (!encontrado) {
             JOptionPane.showMessageDialog(null, "no hay dulce con ese nombre.");
-        }
+        }*/
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -321,4 +323,23 @@ public class Buscar_Dulce extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+    @Override
+    public void iniciar(controlador_Buscar_Dulce controlador){
+        jButton2.addActionListener(controlador);
+        setVisible(true);
+    }
+
+    @Override
+    public String getNombre() {
+        return jTextField1.getText();
+    }
+
+    @Override
+    public void mostrar_datos(String Nombre, String Codigo, String categoria, String precio) {
+        jTextArea1.append("Nombre: " + Nombre + ", " );
+        jTextArea1.append("Código: " + Codigo + ", ");
+        jTextArea1.append("Precio: " + categoria + ", ");
+        jTextArea1.append("Categoría: " + precio + ". \n ");
+        jTextArea1.append("------------------\n");
+    }
 }

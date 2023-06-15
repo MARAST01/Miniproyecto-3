@@ -9,7 +9,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Controlador.ControladorDulceria;
+import Controlador.Controlador_Eliminar_Dulces;
+import Controlador.controlador_Actualizar_Dulce;
+import Controlador.controlador_Buscar_Dulce;
+import Controlador.controlador_Listar_Dulces;
+import Controlador.controlador_Nuevo_Dulceria;
 import logica.Dulces;
+import modelo.Modelo_Dulceria;
 
 /**
  *
@@ -294,31 +302,47 @@ public class GUIAntojitos extends JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Modelo_Dulceria modeloDulceria = new Modelo_Dulceria();
         Buscar_Dulce ventana1 = new Buscar_Dulce();
         ventana1.setVisible(true);
+        controlador_Buscar_Dulce controlador_Buscar_Dulce = new controlador_Buscar_Dulce(modeloDulceria, ventana1);
+        controlador_Buscar_Dulce.inicializacion();
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Modelo_Dulceria modeloDulceria = new Modelo_Dulceria();
         Listar_Dulces ventana1 = new Listar_Dulces();
         ventana1.setVisible(true);
+        controlador_Listar_Dulces controlador_Listar_Dulces = new controlador_Listar_Dulces(modeloDulceria, ventana1);
+        controlador_Listar_Dulces.inicializacion();
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Modelo_Dulceria modeloDulceria = new Modelo_Dulceria();
         Eliminar_Dulces ventana1 = new Eliminar_Dulces();
         ventana1.setVisible(true);
+        Controlador_Eliminar_Dulces controlador_Eliminar_Dulces = new Controlador_Eliminar_Dulces(modeloDulceria, ventana1);
+        controlador_Eliminar_Dulces.inicializacion();
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Modelo_Dulceria modeloDulceria = new Modelo_Dulceria();
         Actualizar_Dulce ventana1 = new Actualizar_Dulce();
         ventana1.setVisible(true);
+        controlador_Actualizar_Dulce controlador_Actualizar_Dulce = new controlador_Actualizar_Dulce(modeloDulceria, ventana1);
+        controlador_Actualizar_Dulce.inicializacion();
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Modelo_Dulceria modeloDulceria = new Modelo_Dulceria();
         Ventana_Nuevo_Dulce ventana1 = new Ventana_Nuevo_Dulce();
         ventana1.setVisible(true);
+        controlador_Nuevo_Dulceria controlador_Nuevo_Dulceria = new controlador_Nuevo_Dulceria(modeloDulceria, ventana1);
+        controlador_Nuevo_Dulceria.inicializacion();
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

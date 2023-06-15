@@ -11,6 +11,10 @@ import logica.Dulces;
 import logica.ListaDulces;
 
 import javax.swing.JTextField;
+
+import Controlador.ControladorDulceria;
+import Controlador.controlador_Nuevo_Dulceria;
+
 import javax.swing.JButton;
 
 
@@ -22,7 +26,7 @@ import javax.swing.JButton;
  * Juan Jose Gallego
  */
 
-public class Ventana_Nuevo_Dulce extends javax.swing.JFrame {
+public class Ventana_Nuevo_Dulce extends javax.swing.JFrame implements Nuevo_Dulce {
 
     /**
      * Creates new form Ventana_Nuevo_Dulce
@@ -272,24 +276,7 @@ public class Ventana_Nuevo_Dulce extends javax.swing.JFrame {
         });
     }
     
-    public JButton getBoton() {
-        System.out.println("hola mundo");
-        return jButton1;
-    }
-    public JTextField getTextFieldNombre() {
-        return jTextField2;
-    }
     
-    public JTextField getTextFieldCodigo() {
-        return jTextField1;
-    }
-    
-    public JTextField getTextFieldPrecio() {
-        return jTextField3;
-    }
-    public JComboBox<String> getComboBox() {
-        return jComboBox1;
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -303,4 +290,29 @@ public class Ventana_Nuevo_Dulce extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+    @Override
+    public void iniciar(controlador_Nuevo_Dulceria controlador) {
+        jButton2.addActionListener(controlador);
+        setVisible(true);
+    }
+
+    @Override
+    public String getNombre() {
+        return jTextField2.getText();
+    }
+
+    @Override
+    public String getCodigo() {
+        return jTextField1.getText();
+    }
+
+    @Override
+    public String getPrecio() {
+        return jTextField3.getText();
+    }
+
+    @Override
+    public Categoria getCategoria() {
+        return Categoria.valueOf(jComboBox1.getSelectedItem().toString().toLowerCase());
+    }
 }
