@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import logica.Dulces;
 import logica.Categoria;
-import logica.ListaDulces;
 
 public class Modelo_Dulceria {
     Categoria categorias;

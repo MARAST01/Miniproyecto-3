@@ -1,16 +1,12 @@
 
 package dulceriaantojitos;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
+
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-import Controlador.ControladorDulceria;
+
 import Controlador.Controlador_Eliminar_Dulces;
 import Controlador.controlador_Actualizar_Dulce;
 import Controlador.controlador_Buscar_Dulce;
@@ -35,7 +31,7 @@ public class GUIAntojitos extends JFrame {
         
         initComponents();
     }
-    @SuppressWarnings("unchecked")
+    //@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
