@@ -2,14 +2,11 @@ package Controlador;
 
 import dulceriaantojitos.ListarDulces;
 import dulceriaantojitos.Listar_Dulces;
-import logica.Categoria;
 import logica.Dulces;
-import logica.ListaDulces;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
 
 import java.awt.event.ActionEvent;
 import modelo.Modelo_Dulceria;
@@ -28,7 +25,8 @@ public class controlador_Listar_Dulces implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        ArrayList<Dulces> listaDulces = modeloDulceria.Listar_Dulces();
+        ArrayList<Dulces> listaDulces = Modelo_Dulceria.Listar_Dulces();
+
 
         for (int i = 0; i < listaDulces.size(); i++) {
                 Dulces dulce = listaDulces.get(i);

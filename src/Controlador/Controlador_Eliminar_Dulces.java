@@ -2,7 +2,6 @@ package Controlador;
 
 import dulceriaantojitos.EliminarDulces;
 import dulceriaantojitos.Eliminar_Dulces;
-import logica.Dulces;
 
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
